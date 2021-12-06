@@ -109,7 +109,9 @@ export default function App() {
                   <a href={one.full}>{one.full}</a>
                 </td>
                 <td>
-                  <a href={'http://localhost:5000/' + one.short}>{one.short}</a>
+                  <a href={'https://abv-url.herokuapp.com/' + one.short}>
+                    {one.short}
+                  </a>
                 </td>
                 <td>{one.attempts}</td>
                 <td>{one.visits}</td>
