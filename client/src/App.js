@@ -9,7 +9,7 @@ export default function App() {
     callApi()
   }, [])
   const callApi = async () => {
-    const response = await fetch('http://localhost:5000/', {
+    const response = await fetch('/getURLS', {
       headers: {
         accepts: 'application/json',
       },
@@ -21,7 +21,7 @@ export default function App() {
   const shortenUrl = async () => {
     let urlSent = url
     setUrl('')
-    const response = await fetch('http://localhost:5000/shorten', {
+    const response = await fetch('/shorten', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

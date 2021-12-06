@@ -3,6 +3,7 @@ const { app } = require('./Xpress')
 const mongoose = require('mongoose')
 const { shortenSchema, updateVisitsSchema } = require('./schemas')
 const shortUrl = require('./models/shortUrl')
+const path = require('path')
 const port = process.env.PORT || 3000
 mongoose
   .connect(process.env.databaseURL, {
@@ -11,7 +12,7 @@ mongoose
   })
   .then((db) => console.log('db is connected'))
   .catch((err) => console.log(err))
-app.get('/', async (req, res) => {
+app.get('/getURLS', async (req, res) => {
   const shortURLS = await shortUrl.find()
   return res.json({ shortURLS })
 })
@@ -58,7 +59,9 @@ app.get('/:shortUrl', async (req, res) => {
 
   res.redirect(short.full)
 })
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build/index.html'))
+})
 app.listen(port, () => {
   console.log('Running --> Application on ' + port)
 })

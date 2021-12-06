@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "14.17.6"
+  },
   "scripts": {
     "client": "cd client && npm start",
     "server": "nodemon index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "start": "node index.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -27,6 +32,7 @@
     "joi": "^17.4.2",
     "mongoose": "^6.0.13",
     "nodemon": "^2.0.15",
+    "path": "^0.12.7",
     "shortid": "^2.2.16"
   }
 }
